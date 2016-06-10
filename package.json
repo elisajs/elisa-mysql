@@ -1,0 +1,61 @@
+{
+  "name": "elisa-mysql",
+  "version": "0.1.0",
+  "description": "MySQL/MariaDB Elisa driver.",
+  "homepage": "http://elisajs.org",
+  "author": {
+    "name": "Justo Labs",
+    "email": "info@justolabs.com",
+    "url": "http://elisajs.org"
+  },
+  "contributors": [
+    {
+      "name": "Raúl G. González",
+      "email": "raulggonzalez@elisajs.org",
+      "url": ""
+    }
+  ],
+  "keywords": [
+    "Databases",
+    "Elisa",
+    "Elisa.js",
+    "MariaDB",
+    "MySQL"
+  ],
+  "bugs": {
+    "url": "https://github.com/elisajs/elisa-mysql/issues",
+    "email": "issues@elisajs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elisajs/elisa-mysql.git"
+  },
+  "engines": {
+    "node": ">= 5.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "dependencies": {
+    "elisa": "*",
+    "elisa-util": "*",
+    "mysql": ">= 2.11.1"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "*",
+    "elisa-driver-validator": "*",
+    "justo": "*",
+    "justo-assert": "*",
+    "justo-plugin-babel": "*",
+    "justo-plugin-fs": "*",
+    "justo-plugin-jshint": "*",
+    "justo-plugin-npm": "*"
+  },
+  "preferGlobal": false,
+  "main": "index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "test": "justo test"
+  }
+}

@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - 5.0
+  - 5.1
+  - 5.2
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - 5.7
+  - 5.8
+  - 5.9
+  - 5.10
+  - 5.11
+  - 6.0
+  - 6.1
+  - 6.2
+os:
+  - linux
+env:
+  - TRAVIS=true
+addons:
+  mariadb: "10.1"
+sudo: false
+before_install: npm install -g justo-cli
+install: npm install
+before_script:
+  - mysql -e "CREATE DATABASE elisa;"
+#script:
+#after_success:
+#after_failure:
+#after_script:
