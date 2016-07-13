@@ -12,36 +12,36 @@ var _Server = require("./Server");var _Server2 = _interopRequireDefault(_Server)
 
 
     {
-      return require("./Namespace").default;} }, { key: "getServerClass", value: function getServerClass() 
-
-
-
-
-
-    {
-      return require("./Server").default;} }, { key: "getDatabaseClass", value: function getDatabaseClass() 
-
+      return require("./Namespace").default;
+    } }, { key: "getServerClass", value: function getServerClass() 
 
 
 
 
     {
-      return require("./Database").default;} }, { key: "getStoreClass", value: function getStoreClass() 
-
-
-
-
-
-    {
-      return require("./Store").default;} }, { key: "getCollectionClass", value: function getCollectionClass() 
-
+      return require("./Server").default;
+    } }, { key: "getDatabaseClass", value: function getDatabaseClass() 
 
 
 
 
     {
-      return require("./Collection").default;} }, { key: "_open", value: function _open(
+      return require("./Database").default;
+    } }, { key: "getStoreClass", value: function getStoreClass() 
 
+
+
+
+    {
+      return require("./Store").default;
+    } }, { key: "getCollectionClass", value: function getCollectionClass() 
+
+
+
+
+    {
+      return require("./Collection").default;
+    } }, { key: "_open", value: function _open(
 
 
 
@@ -72,10 +72,10 @@ var _Server = require("./Server");var _Server2 = _interopRequireDefault(_Server)
           if (err) return callback(err);
 
           _this2.options.version = rows[0].version;
-          callback();});});} }, { key: "_close", value: function _close(
-
-
-
+          callback();
+        });
+      });
+    } }, { key: "_close", value: function _close(
 
 
 
@@ -87,21 +87,21 @@ var _Server = require("./Server");var _Server2 = _interopRequireDefault(_Server)
 
           if (callback) {
             if (error) callback(error);else 
-            callback();}});} else 
-
-
-      {
-        if (callback) process.nextTick(callback);}} }, { key: "_connected", value: function _connected(
-
-
+            callback();
+          }
+        });
+      } else {
+        if (callback) process.nextTick(callback);
+      }
+    } }, { key: "_connected", value: function _connected(
 
 
 
 
     callback) {
       if (this.opened) this._ping(function (error) {callback(undefined, !error);});else 
-      callback(undefined, false);} }, { key: "_ping", value: function _ping(
-
+      callback(undefined, false);
+    } }, { key: "_ping", value: function _ping(
 
 
 
@@ -110,7 +110,9 @@ var _Server = require("./Server");var _Server2 = _interopRequireDefault(_Server)
       if (this.opened) {
         this.client.query("SELECT 1;", function (error, rows) {
           if (error) callback(error);else 
-          callback();});} else 
-
-      {
-        callback(new Error("Connection closed."));}} }]);return _class;}(_elisa.Connection);exports.default = _class;
+          callback();
+        });
+      } else {
+        callback(new Error("Connection closed."));
+      }
+    } }]);return _class;}(_elisa.Connection);exports.default = _class;

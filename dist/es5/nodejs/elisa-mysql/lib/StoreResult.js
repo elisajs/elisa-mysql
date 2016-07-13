@@ -16,4 +16,6 @@ var _Result2 = require("./Result");var _Result3 = _interopRequireDefault(_Result
       for (var _iterator = rows[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var row = _step.value;
         var doc = JSON.parse(row.value);
         doc.id = row.id;
-        _this.add(doc);}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}return _this;}return _class;}(_Result3.default);exports.default = _class;
+        _this.add(doc);
+      }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}return _this;
+  }return _class;}(_Result3.default);exports.default = _class;

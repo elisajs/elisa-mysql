@@ -15,4 +15,5 @@ var _elisa = require("elisa");function _classCallCheck(instance, Constructor) {i
 
     Object.defineProperty(_this, "host", { value: connection.options.host, enumerable: true });
     Object.defineProperty(_this, "port", { value: connection.options.port, enumerable: true });
-    Object.defineProperty(_this, "version", { value: connection.options.version, enumerable: true });return _this;}return _class;}(_elisa.Server);exports.default = _class;
+    Object.defineProperty(_this, "version", { value: connection.options.version, enumerable: true });return _this;
+  }return _class;}(_elisa.Server);exports.default = _class;

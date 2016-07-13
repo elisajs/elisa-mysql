@@ -12,15 +12,15 @@ MySQLDriver = function (_Driver) {_inherits(MySQLDriver, _Driver);
 
 
   function MySQLDriver() {_classCallCheck(this, MySQLDriver);return _possibleConstructorReturn(this, Object.getPrototypeOf(MySQLDriver).call(this, 
-    "MySQL", ["MariaDB"]));}_createClass(MySQLDriver, [{ key: "_createConnection", value: function _createConnection(
-
+    "MySQL", ["MariaDB"]));
+  }_createClass(MySQLDriver, [{ key: "_createConnection", value: function _createConnection(
 
 
 
 
     eliOpts, opts) {
-      return new _Connection2.default(this, eliOpts, opts);} }]);return MySQLDriver;}(_elisa.Driver);exports.default = MySQLDriver;
-
+      return new _Connection2.default(this, eliOpts, opts);
+    } }]);return MySQLDriver;}(_elisa.Driver);exports.default = MySQLDriver;
 
 
 _elisa.Driver.register(new MySQLDriver());

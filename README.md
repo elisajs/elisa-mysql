@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/elisajs/elisa-mysql/dev-status.svg)](https://david-dm.org/elisajs/elisa-mysql#info=devDependencies)
 
 **MySQL**/**MariaDB** *Elisa* driver.
-This driver complies with [Elisa 0.4 spec](https://github.com/elisajs/elisa).
+This driver complies with [Elisa 0.5 spec](https://github.com/elisajs/elisa).
 
 *Proudly made with ♥ in Valencia, Spain, EU.*
 
@@ -53,4 +53,22 @@ CREATE TABLE `my.bands`(id VARCHAR(256) PRIMARY KEY, value TEXT NOT NULL);
 
 ## Collections
 
-Pending to implement.
+Right now, the collections are supported by *MySQL* natively, but *MariaDB* doesn't.
+The *Elisa* driver only supports the *MariaDB* collections using tables as:
+
+```
+--without namespace
+CREATE TABLE `bands`(id VARCHAR(256) PRIMARY KEY, doc BLOB NOT NULL);
+CREATE TABLE `bands`(id int PRIMARY KEY AUTO_INCREMENT, doc BLOB NOT NULL);
+
+--with namespace
+CREATE TABLE `my.bands`(id VARCHAR(256) PRIMARY KEY, doc BLOB NOT NULL);
+CREATE TABLE `my.bands`(id int PRIMARY KEY AUTO_INCREMENT, doc BLOB NOT NULL);
+```
+
+Notes:
+
+- The boolean values are saved as strings with `$` starting the value: `$true` or `$false`.
+  The driver converts `$true` to `true` and `$false` to `false` and vice versa.
+- The array and object values are saved as strings using their JSON representation, starting with
+  `$`. The driver does the transformation bidirectional.

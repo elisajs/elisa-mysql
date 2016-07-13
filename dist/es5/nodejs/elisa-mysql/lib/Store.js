@@ -23,9 +23,9 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
     id, callback) {
       this.client.query("SELECT * FROM `" + this.qn + "` WHERE id = ?", [id], function (err, rows) {
         if (err) return callback(err);
-        callback(undefined, rows.length > 0);});} }, { key: "_count", value: function _count(
-
-
+        callback(undefined, rows.length > 0);
+      });
+    } }, { key: "_count", value: function _count(
 
 
 
@@ -33,9 +33,9 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
     opts, callback) {
       this.client.query("SELECT count(*) as count FROM `" + this.qn + "`", function (err, rows) {
         if (err) return callback(err);
-        callback(undefined, rows[0].count);});} }, { key: "_findOne", value: function _findOne(
-
-
+        callback(undefined, rows[0].count);
+      });
+    } }, { key: "_findOne", value: function _findOne(
 
 
 
@@ -53,14 +53,14 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
         if (err) return callback(err);
 
         if (rows.length === 0) {
-          callback();} else 
-        {
+          callback();
+        } else {
           var doc = JSON.parse(rows[0].value);
           doc.id = query.id;
-          callback(undefined, doc);}});} }, { key: "_findAll", value: function _findAll(
-
-
-
+          callback(undefined, doc);
+        }
+      });
+    } }, { key: "_findAll", value: function _findAll(
 
 
 
@@ -68,17 +68,17 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
     opts, callback) {
       this.client.query("SELECT * FROM `" + this.qn + "`", function (err, rows) {
         if (err) return callback(err);
-        callback(undefined, new _StoreResult2.default(rows));});} }, { key: "_insert", value: function _insert(
-
-
+        callback(undefined, new _StoreResult2.default(rows));
+      });
+    } }, { key: "_insert", value: function _insert(
 
 
 
 
     docs, opts, callback) {
       if (docs instanceof Array) this[insertDocs](docs, opts, callback);else 
-      this[insertDoc](docs, opts, callback);} }, { key: 
-
+      this[insertDoc](docs, opts, callback);
+    } }, { key: 
 
     insertDoc, value: function value(doc, opts, callback) {
       var sql, id, value;
@@ -94,25 +94,24 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
 
       this.client.query(sql, [{ id: id, value: value }, { value: value }], function (err, res) {
         if (err) return callback(err);
-        callback();});} }, { key: 
-
-
-
+        callback();
+      });
+    } }, { key: 
 
     insertDocs, value: function value(docs, opts, callback) {var _this2 = this;
       var insert = function insert(i) {
         if (i < docs.length) {
           _this2[insertDoc](docs[i], opts, function (error) {
             if (error) return callback(error);
-            insert(i + 1);});} else 
+            insert(i + 1);
+          });
+        } else {
+          callback();
+        }
+      };
 
-        {
-          callback();}};
-
-
-
-      insert(0);} }, { key: "_update", value: function _update(
-
+      insert(0);
+    } }, { key: "_update", value: function _update(
 
 
 
@@ -125,13 +124,34 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
           update(doc, updt);
           _this3._insert(doc, opts, function (err) {
             if (err) return callback(err);
-            callback();});} else 
+            callback();
+          });
+        } else {
+          callback();
+        }
+      });
+    } }, { key: "_save", value: function _save(
 
-        {
-          callback();}});} }, { key: "_remove", value: function _remove(
 
 
 
+    doc, opts, callback) {
+      var sql, id, value;
+
+
+      id = doc.id;
+      doc = Object.assign({}, doc);
+      delete doc.id;
+      value = JSON.stringify(doc);
+
+
+      sql = "INSERT INTO `" + this.qn + "` SET ? ON DUPLICATE KEY UPDATE ?";
+
+      this.client.query(sql, [{ id: id, value: value }, { value: value }], function (err, res) {
+        if (err) return callback(err);
+        callback();
+      });
+    } }, { key: "_remove", value: function _remove(
 
 
 
@@ -139,9 +159,9 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
     query, opts, callback) {
       this.client.query("DELETE FROM `" + this.qn + "` WHERE id = ?", [query.id], function (err) {
         if (err) return callback(err);
-        callback();});} }, { key: "_truncate", value: function _truncate(
-
-
+        callback();
+      });
+    } }, { key: "_truncate", value: function _truncate(
 
 
 
@@ -149,4 +169,6 @@ var insertDocs = Symbol();var _class = function (_Store) {_inherits(_class, _Sto
     opts, callback) {
       this.client.query("TRUNCATE `" + this.qn + "`", function (err) {
         if (err) return callback(err);
-        callback();});} }]);return _class;}(_elisa.Store);exports.default = _class;
+        callback();
+      });
+    } }]);return _class;}(_elisa.Store);exports.default = _class;

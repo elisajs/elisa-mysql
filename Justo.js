@@ -70,13 +70,15 @@ catalog.workflow({name: "publish", desc: "NPM publish."}, function() {
 
 catalog.workflow({name: "install-elisa", desc: "Install Elisa API."}, function() {
   npm.install("Install Elisa API", {
-    pkg: "../elisa/dist/es5/nodejs/elisa/"
+    pkg: "../elisa/dist/es5/nodejs/elisa/",
+    output: false
   });
 });
 
 catalog.workflow({name: "install-validator", desc: "Install Elisa validator."}, function() {
   npm.install("Install Elisa validator", {
-    pkg: "../elisa-driver-validator/dist/es5/nodejs/elisa-driver-validator/"
+    pkg: "../elisa-driver-validator/dist/es5/nodejs/elisa-driver-validator/",
+    output: false
   });
 });
 
