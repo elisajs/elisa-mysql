@@ -26,7 +26,7 @@ function createStores(cxOpts, stores, done) {
       if (i < stores.length) {
         let store = stores[i], name = store.name, docs = store.docs;
 
-        cx.query(`CREATE TABLE \`${name}\`(id VARCHAR(256) PRIMARY KEY, value TEXT NOT NULL)`, function(err) {
+        cx.query(`CREATE TABLE \`${name}\`(id VARCHAR(256) PRIMARY KEY, value VARCHAR(60000) NOT NULL) ENGINE=MEMORY`, function(err) {
           if (err) return done(err);
 
           if (docs && docs.length > 0) {
